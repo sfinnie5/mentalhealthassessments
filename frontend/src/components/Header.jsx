@@ -1,12 +1,15 @@
 import {Navbar, Nav, Container} from 'react-bootstrap'
 import {FaUser} from 'react-icons/fa'
+import insightmhglogo from '../assets/insightmhglogo.jpg'
 
 const Header = () => {
   return (
     <header>
-        <Navbar style={{backgroundColor: '#848b79'}} variant='dark' expand='md' collapseOnSelect >
+        <Navbar expand='md' collapseOnSelect >
             <Container>
-                <Navbar.Brand href='/'>Insight Mental Health Group</Navbar.Brand>
+                <Navbar.Brand href='/'>
+                    <img src={insightmhglogo} alt='Insight Mental Health Group'/>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav'></Navbar.Toggle>
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className='ms-auto'>
