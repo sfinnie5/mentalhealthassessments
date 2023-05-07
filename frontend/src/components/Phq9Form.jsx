@@ -1,8 +1,8 @@
 import { FormGroup, Label, Button, Input } from 'reactstrap'
-import { Formik, Form, ErrorMessage } from 'formik'
+import { Formik, Form } from 'formik'
 import { useState } from 'react'
 
-const Phq9Form = ({onSubmit}) => {
+const Phq9Form = ({ onSubmit }) => {
     const initialValues = {
         'question-1': '',
         'question-2': '',
@@ -14,7 +14,7 @@ const Phq9Form = ({onSubmit}) => {
         'question-8': '',
         'question-9': '',
     }
-    const [phq9Answers, setphq9Answers] = useState(initialValues)
+    const [phq9Answers, setPhq9Answers] = useState(initialValues)
 
     const questionsphq9 = [
         {
@@ -109,16 +109,21 @@ const Phq9Form = ({onSubmit}) => {
         },
     ]
 
-    const handleChange = (e) => setphq9Answers(e.name.value)
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const newPhq9Answer = {
-            value: phq9Answers,
-        }
-        onSubmit(newPhq9Answer)
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setPhq9Answers({
+            ...prevState,
+            [name]: value,
+        })
     }
 
+    const handleSubmit = () => {
+        setPhq9Answers(phq9Answers => {
+          onSubmit(phq9Answers);
+          console.log('Woohoo!!');
+          return phq9Answers;
+        });
+      };
 
     return (
         <Formik initialValues={initialValues}>
