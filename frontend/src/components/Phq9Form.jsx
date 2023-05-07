@@ -108,15 +108,6 @@ const Phq9Form = ({ onSubmit }) => {
             ],
         },
     ]
-
-    const handleChange = (event) => {
-        const { name, value } = event.target
-        setPhq9Answers({
-            ...prevState,
-            [name]: value,
-        })
-    }
-
     const handleSubmit = () => {
         setPhq9Answers(phq9Answers => {
           onSubmit(phq9Answers);
@@ -124,6 +115,14 @@ const Phq9Form = ({ onSubmit }) => {
           return phq9Answers;
         });
       };
+
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setPhq9Answers({
+            ...phq9Answers,
+            [name]: value,
+        })
+    }
 
     return (
         <Formik initialValues={initialValues}>
