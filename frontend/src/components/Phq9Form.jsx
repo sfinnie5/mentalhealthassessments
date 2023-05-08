@@ -1,8 +1,9 @@
 import { FormGroup, Label, Button, Input } from 'reactstrap'
 import { Formik, Form } from 'formik'
 import { useState } from 'react'
+import SubmitModal from './SubmitModal'
 
-const Phq9Form = ({ onSubmit }) => {
+const Phq9Form = ({onSubmit}) => {
     const initialValues = {
         'question-1': '',
         'question-2': '',
@@ -15,7 +16,7 @@ const Phq9Form = ({ onSubmit }) => {
         'question-9': '',
     }
     const [phq9Answers, setPhq9Answers] = useState(initialValues)
-
+    const [showModal, setShowModal] = useState(false)
     const questionsphq9 = [
         {
             id: 1,
@@ -109,12 +110,16 @@ const Phq9Form = ({ onSubmit }) => {
         },
     ]
     const handleSubmit = () => {
-        setPhq9Answers(phq9Answers => {
-          onSubmit(phq9Answers);
-          console.log('Woohoo!!');
-          return phq9Answers;
-        });
-      };
+        setPhq9Answers((phq9Answers) => {
+            onSubmit(phq9Answers)
+            return phq9Answers
+        })
+        setShowModal(true)
+    }
+
+    const closeModal = () => {
+        setShowModal(false)
+    }
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -125,8 +130,8 @@ const Phq9Form = ({ onSubmit }) => {
     }
 
     return (
-        <Formik initialValues={initialValues}>
-            <Form onSubmit={handleSubmit}>
+        <Formik  onSubmit={handleSubmit} initialValues={initialValues}>
+            <Form>
                 {questionsphq9.map((question) => (
                     <FormGroup key={question.id}>
                         <h5>{question.text}</h5>
@@ -145,10 +150,15 @@ const Phq9Form = ({ onSubmit }) => {
                         ))}
                     </FormGroup>
                 ))}
-                <Button type='submit'>Submit</Button>
+                <Button type='submit' onClick={() => handleSubmit(phq9Answers)}>
+                    Submit
+                </Button>
+                {showModal && <SubmitModal onClose={closeModal} />}
             </Form>
         </Formik>
     )
 }
 
 export default Phq9Form
+
+

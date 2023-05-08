@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
 const SubmitModal = () => {
-    const [modal, setModal] = useState(false)
-    const toggle = () => setModal(!modal)
+    const [isOpen, setIsOpen] = useState(false)
+    const toggle = () => setIsOpen(!isOpen)
     return (
         <div>
-            <Modal isOpen={modal} toggle={toggle} {...args}>
+            <Modal isOpen={isOpen} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
                     Your Completed Assessment Has Been Received
                 </ModalHeader>
@@ -16,6 +16,7 @@ const SubmitModal = () => {
                             <a
                                 href='https://www.nimh.nih.gov/health/topics/anxiety-disorders'
                                 target='_blank'
+                                rel="noopener noreferrer"
                             >
                                 National Institute of Mental Health - Anxiety
                                 Disorders
@@ -25,6 +26,7 @@ const SubmitModal = () => {
                             <a
                                 href='https://adaa.org/understanding-anxiety'
                                 target='_blank'
+                                rel="noopener noreferrer"
                             >
                                 Anxiety and Depression Association of America -
                                 Understanding Anxiety
@@ -34,6 +36,7 @@ const SubmitModal = () => {
                             <a
                                 href='https://psychcentral.com/anxiety'
                                 target='_blank'
+                                rel="noopener noreferrer"
                             >
                                 Psych Central - Anxiety
                             </a>
@@ -46,3 +49,4 @@ const SubmitModal = () => {
 }
 
 export default SubmitModal
+
