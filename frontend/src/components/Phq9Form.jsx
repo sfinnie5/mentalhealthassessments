@@ -150,7 +150,7 @@ const Phq9Form = ({onSubmit}) => {
                         ))}
                     </FormGroup>
                 ))}
-                <Button type='submit' onClick={() => handleSubmit(phq9Answers)}>
+                <Button type='submit'>
                     Submit
                 </Button>
                 {showModal && <SubmitModal onClose={closeModal} />}

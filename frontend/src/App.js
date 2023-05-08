@@ -4,6 +4,12 @@ import Footer from './components/Footer'
 import Phq9Form from './components/Phq9Form'
 
 const App = () => {
+    const [phq9Answers, setPhq9Answers] = useState(null);
+
+    const handleFormSubmit = (answers) => {
+      setPhq9Answers(answers);
+      console.log(answers);
+    }
     return (
         <>
             <Header />
@@ -12,7 +18,7 @@ const App = () => {
                     <h1>PHQ-9 (Patient Health Questionaire-9)</h1>
                 </Col>
             </main>
-            <Phq9Form />
+            <Phq9Form onSubmit={handleFormSubmit}/>
             <Footer />
         </>
     )
