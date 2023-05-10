@@ -1,6 +1,7 @@
 import { Form, FormGroup, Label, Button, Input } from 'reactstrap'
 import { useState } from 'react'
 import SubmitModal from './SubmitModal'
+// import { validatePhq9Form } from '../utils/validatePhq9Form'
 
 const Phq9Form = ({ onSubmit }) => {
     const [answers, setAnswers] = useState({})
