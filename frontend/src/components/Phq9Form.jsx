@@ -1,22 +1,10 @@
-import { FormGroup, Label, Button, Input } from 'reactstrap'
-import { Formik, Form } from 'formik'
+import { Form,FormGroup, Label, Button, Input } from 'reactstrap'
 import { useState } from 'react'
-import SubmitModal from './SubmitModal'
+// import SubmitModal from './SubmitModal'
 
 const Phq9Form = ({onSubmit}) => {
-    const initialValues = {
-        'question-1': '',
-        'question-2': '',
-        'question-3': '',
-        'question-4': '',
-        'question-5': '',
-        'question-6': '',
-        'question-7': '',
-        'question-8': '',
-        'question-9': '',
-    }
-    const [phq9Answers, setPhq9Answers] = useState(initialValues)
-    const [showModal, setShowModal] = useState(false)
+    const [answers, setAnswers] = useState({})
+    // const [showModal, setShowModal] = useState(false)
     const questionsphq9 = [
         {
             id: 1,
@@ -109,29 +97,22 @@ const Phq9Form = ({onSubmit}) => {
             ],
         },
     ]
-    const handleSubmit = () => {
-        setPhq9Answers((phq9Answers) => {
-            onSubmit(phq9Answers)
-            return phq9Answers
-        })
-        setShowModal(true)
+
+    const handleChange = (e) => {
+        setAnswers({...answers,[e.target.name]: +e.target.value})
     }
 
-    const closeModal = () => {
-        setShowModal(false)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+      onSubmit(answers)
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target
-        setPhq9Answers({
-            ...phq9Answers,
-            [name]: value,
-        })
-    }
+    // const closeModal = () => {
+    //     setShowModal(false)
+    // }
 
     return (
-        <Formik  onSubmit={handleSubmit} initialValues={initialValues}>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 {questionsphq9.map((question) => (
                     <FormGroup key={question.id}>
                         <h5>{question.text}</h5>
@@ -153,12 +134,9 @@ const Phq9Form = ({onSubmit}) => {
                 <Button type='submit'>
                     Submit
                 </Button>
-                {showModal && <SubmitModal onClose={closeModal} />}
+                {/* {showModal && <SubmitModal onClose={closeModal} />} */}
             </Form>
-        </Formik>
     )
 }
 
 export default Phq9Form
-
-
