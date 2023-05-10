@@ -1,10 +1,10 @@
-import { Form,FormGroup, Label, Button, Input } from 'reactstrap'
+import { Form, FormGroup, Label, Button, Input } from 'reactstrap'
 import { useState } from 'react'
-// import SubmitModal from './SubmitModal'
+import SubmitModal from './SubmitModal'
 
-const Phq9Form = ({onSubmit}) => {
+const Phq9Form = ({ onSubmit }) => {
     const [answers, setAnswers] = useState({})
-    // const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const questionsphq9 = [
         {
             id: 1,
@@ -99,43 +99,42 @@ const Phq9Form = ({onSubmit}) => {
     ]
 
     const handleChange = (e) => {
-        setAnswers({...answers,[e.target.name]: +e.target.value})
+        setAnswers({ ...answers, [e.target.name]: +e.target.value })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-      onSubmit(answers)
+        onSubmit(answers)
+        setShowModal(true)
     }
 
-    // const closeModal = () => {
-    //     setShowModal(false)
-    // }
+    const closeModal = () => {
+        setShowModal(false)
+    }
 
     return (
-            <Form onSubmit={handleSubmit}>
-                {questionsphq9.map((question) => (
-                    <FormGroup key={question.id}>
-                        <h5>{question.text}</h5>
-                        {question.answers.map((answer) => (
-                            <FormGroup check key={answer.value}>
-                                <Label check>
-                                    <Input
-                                        onChange={handleChange}
-                                        type='radio'
-                                        name={`question-${question.id}`}
-                                        value={answer.value}
-                                    />{' '}
-                                    {answer.text}
-                                </Label>
-                            </FormGroup>
-                        ))}
-                    </FormGroup>
-                ))}
-                <Button type='submit'>
-                    Submit
-                </Button>
-                {/* {showModal && <SubmitModal onClose={closeModal} />} */}
-            </Form>
+        <Form onSubmit={handleSubmit}>
+            {questionsphq9.map((question) => (
+                <FormGroup key={question.id}>
+                    <h5>{question.text}</h5>
+                    {question.answers.map((answer) => (
+                        <FormGroup check key={answer.value}>
+                            <Label check>
+                                <Input
+                                    onChange={handleChange}
+                                    type='radio'
+                                    name={`question-${question.id}`}
+                                    value={answer.value}
+                                />{' '}
+                                {answer.text}
+                            </Label>
+                        </FormGroup>
+                    ))}
+                </FormGroup>
+            ))}
+            <Button type='submit'>Submit</Button>
+            {showModal && <SubmitModal onCloseModal={closeModal} />}
+        </Form>
     )
 }
 
