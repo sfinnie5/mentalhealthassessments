@@ -6,6 +6,10 @@ import SubmitModal from './SubmitModal'
 const Phq9Form = ({ onSubmit }) => {
     const [answers, setAnswers] = useState({})
     const [showModal, setShowModal] = useState(false)
+    const toggleModal = () => {
+        setShowModal(!showModal)
+    }
+
     const questionsphq9 = [
         {
             id: 1,
@@ -134,7 +138,7 @@ const Phq9Form = ({ onSubmit }) => {
                 </FormGroup>
             ))}
             <Button type='submit'>Submit</Button>
-            {showModal && <SubmitModal onCloseModal={closeModal} />}
+            <SubmitModal showModal={showModal} toggleModal={toggleModal} />
         </Form>
     )
 }
