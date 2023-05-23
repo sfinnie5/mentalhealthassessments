@@ -126,9 +126,7 @@ const Phq9Form = ({ onSubmit }) => {
     return (
         <Form onSubmit={handleSubmit}>
             <Container fluid>
-                <Row
-                    className='align-items-center justify-content-center'
-                >
+                <Row className='align-items-center justify-content-center'>
                     <Col xs={12} className='text-center'>
                         <h1>PHQ-9 (Patient Health Questionnaire-9)</h1>
                     </Col>
