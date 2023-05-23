@@ -1,13 +1,11 @@
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
 const SubmitModal = ({ showModal, toggleModal }) => {
-    const closeModal = () => {
-        toggleModal()
-    }
+
 
     return (
-        <Modal isOpen={showModal} toggle={closeModal} className='submitmodal'>
-            <ModalHeader>
+        <Modal isOpen={showModal} toggle={toggleModal} className='submitmodal'>
+            <ModalHeader toggle={toggleModal}>
                 Your Completed Assessment Has Been Received.
                 For more information about anxiety and depression ahead of your appointment, please refer to the resource links below.
             </ModalHeader>

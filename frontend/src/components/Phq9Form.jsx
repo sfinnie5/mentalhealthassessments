@@ -1,4 +1,13 @@
-import { Form, FormGroup, Label, Button, Input } from 'reactstrap'
+import {
+    Container,
+    Row,
+    Col,
+    Form,
+    FormGroup,
+    Label,
+    Button,
+    Input,
+} from 'reactstrap'
 import { useState } from 'react'
 import SubmitModal from './SubmitModal'
 // import { validatePhq9Form } from '../utils/validatePhq9Form'
@@ -111,14 +120,20 @@ const Phq9Form = ({ onSubmit }) => {
         e.preventDefault()
         onSubmit(answers)
         setShowModal(true)
-    }
-
-    const closeModal = () => {
-        setShowModal(false)
+        setAnswers({})
     }
 
     return (
         <Form onSubmit={handleSubmit}>
+            <Container fluid>
+                <Row
+                    className='align-items-center justify-content-center'
+                >
+                    <Col xs={12} className='text-center'>
+                        <h1>PHQ-9 (Patient Health Questionnaire-9)</h1>
+                    </Col>
+                </Row>
+            </Container>
             {questionsphq9.map((question) => (
                 <FormGroup key={question.id}>
                     <h5>{question.text}</h5>

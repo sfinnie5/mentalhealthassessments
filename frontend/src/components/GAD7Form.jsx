@@ -1,10 +1,13 @@
-import { Form, FormGroup, Label, Button, Input } from 'reactstrap'
+import { Col, Form, FormGroup, Label, Button, Input } from 'reactstrap'
 import { useState } from 'react'
 import SubmitModal from './SubmitModal'
 
 const GAD7Form = ({ onSubmit }) => {
     const [answers, setAnswers] = useState({})
     const [showModal, setShowModal] = useState(false)
+    const toggleModal = () => {
+        setShowModal(!showModal)
+    }
     const questionsGad7 = [
         {
             id: 1,
@@ -75,7 +78,7 @@ const GAD7Form = ({ onSubmit }) => {
                 { text: 'More than half the days', value: '2' },
                 { text: 'Nearly every day', value: '3' },
             ],
-        }
+        },
     ]
 
     const handleChange = (e) => {
@@ -86,14 +89,18 @@ const GAD7Form = ({ onSubmit }) => {
         e.preventDefault()
         onSubmit(answers)
         setShowModal(true)
-    }
-
-    const closeModal = () => {
-        setShowModal(false)
+        setAnswers({})
     }
 
     return (
         <Form onSubmit={handleSubmit}>
+            <Container fluid>
+                <Row className='align-items-center justify-content-center'>
+                    <Col xs={12} className='text-center'>
+                        <h1>GAD-7 (Generalized Anxiety Disorder-7)</h1>
+                    </Col>
+                </Row>
+            </Container>
             {questionsGad7.map((question) => (
                 <FormGroup key={question.id}>
                     <h5>{question.text}</h5>
@@ -113,7 +120,7 @@ const GAD7Form = ({ onSubmit }) => {
                 </FormGroup>
             ))}
             <Button type='submit'>Submit</Button>
-            {showModal && <SubmitModal onCloseModal={closeModal} />}
+            <SubmitModal showModal={showModal} toggleModal={toggleModal} />
         </Form>
     )
 }

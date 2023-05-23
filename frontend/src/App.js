@@ -1,8 +1,9 @@
-import { Col } from 'reactstrap'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-// import Phq9Form from './components/Phq9Form'
-import GAD7Form from './components/GAD7Form'
+import Phq9Form from './components/Phq9Form'
+// import GAD7Form from './components/GAD7Form'
+import HomePage from './components/HomePage'
 import { useState } from 'react'
 
 let nextId = 1
@@ -24,21 +25,17 @@ const App = () => {
         </div>
     ))
     return (
-        <>
+        <Router>
             <Header />
-            <main className='py-3'>
-                <Col>
-                    <h1>PHQ-9 (Patient Health Questionaire-9)</h1>
-                </Col>
-            </main>
-            {/* <Phq9Form onSubmit={handleSubmit} /> */}
-            <GAD7Form onSubmit={handleSubmit} />
+            <HomePage />
+            <Phq9Form onSubmit={handleSubmit} />
+            {/* <GAD7Form onSubmit={handleSubmit} /> */}
             <div className='assessment-list'>
                 <h2>Prior Assessments:</h2>
                 {submissionList}
             </div>
             <Footer />
-        </>
+        </Router>
     )
 }
 
