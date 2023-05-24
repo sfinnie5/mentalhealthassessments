@@ -1,3 +1,20 @@
 .submitmodal .modal-header {
     align-items: flex-start;
   }
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table th {
+  font-weight: bold;
+  text-align: center;
+}
+

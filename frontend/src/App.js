@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Phq9Form from './components/Phq9Form'
 import GAD7Form from './components/GAD7Form'
 import HomePage from './components/HomePage'
+import Table from './components/Table'
 import { useState } from 'react'
 
 let nextId = 1
@@ -52,6 +53,7 @@ const App = () => {
                                         </div>
                                     )
                                 })}
+                                <Table />
                             </div>
                         </div>
                     }
@@ -87,6 +89,7 @@ const App = () => {
                                         </div>
                                     )
                                 })}
+                                <Table />
                             </div>
                         </div>
                     }
