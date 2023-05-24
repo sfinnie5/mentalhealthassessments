@@ -98,6 +98,7 @@ const GAD7Form = ({ onSubmit }) => {
                 <Row className='align-items-center justify-content-center'>
                     <Col xs={12} className='text-center'>
                         <h1>GAD-7 (Generalized Anxiety Disorder-7)</h1>
+                        <h6 style={{ paddingBottom: '20px' }}>Over the last two weeks, how often have you been bothered by any of the following problems?</h6>
                     </Col>
                 </Row>
             </Container>
