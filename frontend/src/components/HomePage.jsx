@@ -6,11 +6,11 @@ const HomePage = () => {
         <Container fluid>
             <Row className='align-items-center justify-content-center'>
                 <Col xs='12'>
-                    <h3 className='text-center'>
+                    <h3 className='text-center' >
                         Welcome to Insight Mental Health Group's Assessment
                         Platform
                     </h3>
-                    <p>
+                    <p className='text-center'style={{ paddingBottom: '10px' }}>
                         Are you experiencing symptoms of depression or anxiety?
                         Do you want to gain insights into your mental health and
                         take the first step towards a happier and healthier
@@ -18,7 +18,7 @@ const HomePage = () => {
                         Assessment Platform.
                     </p>
                     <h4 className='text-center'>Gain Valuable Insights into Your Mental Health</h4>
-                    <p>
+                    <p style={{ paddingBottom: '10px' }}>
                         At Insight Mental Health Group, we understand the
                         importance of mental well-being. Our Assessment Platform
                         provides you with an opportunity to assess your mental
@@ -31,7 +31,7 @@ const HomePage = () => {
                         journey.
                     </p>
                     <h4 className='text-center'>How It Works</h4>
-                    <ol>
+                    <ol style={{ paddingBottom: '10px' }}>
                         <li style={{ marginBottom: '10px' }}>
                             Take the Assessments: Start by selecting the
                             assessment you wish to complete, either the PHQ-9 or
@@ -74,7 +74,7 @@ const HomePage = () => {
                         life. Begin your assessments today and let Insight
                         Mental Health Group be your partner in mental wellness.
                     </p>
-                    <p>
+                    <p style={{ paddingBottom: '50px' }}>
                         Remember, you are not alone. We are here to support you
                         every step of the way.
                     </p>

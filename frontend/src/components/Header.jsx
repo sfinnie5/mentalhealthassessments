@@ -8,12 +8,12 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+    setShowMenu(!showMenu)
+  }
 
   return (
     <header>
-      <Navbar variant='light' expand='' collapseOnSelect>
+      <Navbar variant='light' expand=''>
         <Container>
           <Navbar.Brand as={Link} to='/'>
             <img src={insightmhglogo} alt='Insight Mental Health Group' />
@@ -25,12 +25,14 @@ const Header = () => {
           >
             <FaBars />
           </Navbar.Toggle>
-          <Navbar.Collapse id='basic-navbar-nav' className={!showMenu ? 'collapse' : ''}>
+          <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <Nav.Link as={Link} to='/phq9form' onClick={toggleMenu}>
+              <Nav.Link as={Link} to='/phq9form'onClick={toggleMenu}
+ style={{ fontWeight: 'bold' }}>
                 PHQ-9 Form
               </Nav.Link>
-              <Nav.Link as={Link} to='/gad7form' onClick={toggleMenu}>
+              <Nav.Link as={Link} to='/gad7form'onClick={toggleMenu}
+ style={{ fontWeight: 'bold' }}>
                 GAD-7 Form
               </Nav.Link>
             </Nav>
@@ -42,5 +44,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
