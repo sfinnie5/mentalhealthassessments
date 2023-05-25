@@ -1,14 +1,5 @@
-import {
-    Container,
-    Row,
-    Col,
-    Form,
-    FormGroup,
-    Label,
-    Button,
-    Input,
-} from 'reactstrap'
 import { useState } from 'react'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import SubmitModal from './SubmitModal'
 // import { validatePhq9Form } from '../utils/validatePhq9Form'
 
@@ -129,27 +120,30 @@ const Phq9Form = ({ onSubmit }) => {
                 <Row className='align-items-center justify-content-center'>
                     <Col xs={12} className='text-center'>
                         <h1>PHQ-9 (Patient Health Questionnaire-9)</h1>
-                        <h5 style={{ paddingBottom: '20px' }}>Over the last two weeks, how often have you been bothered by any of the following problems?</h5>
+                        <h5 style={{ paddingBottom: '10px' }}>
+                            Over the last two weeks, how often have you been
+                            bothered by any of the following problems?
+                        </h5>
                     </Col>
                 </Row>
             </Container>
             {questionsphq9.map((question) => (
-                <FormGroup key={question.id}>
-                    <h5>{question.text}</h5>
+                <Form.Group key={question.id}>
+                    <Form.Label>
+                        <h5>{question.text}</h5>
+                    </Form.Label>
                     {question.answers.map((answer) => (
-                        <FormGroup check key={answer.value}>
-                            <Label check>
-                                <Input
-                                    onChange={handleChange}
-                                    type='radio'
-                                    name={`question-${question.id}`}
-                                    value={answer.value}
-                                />{' '}
-                                {answer.text}
-                            </Label>
-                        </FormGroup>
+                        <Form.Group key={answer.value}>
+                            <Form.Check
+                                type='radio'
+                                name={`question-${question.id}`}
+                                value={answer.value}
+                                label={answer.text}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
                     ))}
-                </FormGroup>
+                </Form.Group>
             ))}
             <Button type='submit'>Submit</Button>
             <SubmitModal showModal={showModal} toggleModal={toggleModal} />
