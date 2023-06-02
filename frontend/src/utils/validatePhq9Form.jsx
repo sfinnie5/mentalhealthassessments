@@ -1,10 +1,11 @@
-export const validatePhq9Form = (values) => {
-    const errors = {}
-  
-    if (!values.answers || Object.keys(values.answers).length === 0) {
-      errors.answers = 'Please select an answer for each question'
+export const validatePhq9Form = (answers) => {
+  const errors = {};
+
+  questionsphq9.forEach((question) => {
+    if (!answers[`question-${question.id}`]) {
+      errors[question.id] = 'Please select an answer.';
     }
-  
-    return errors
-  }
-  
+  });
+
+  return errors;
+};
